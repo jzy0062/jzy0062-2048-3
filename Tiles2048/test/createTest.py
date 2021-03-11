@@ -38,8 +38,8 @@ class CreateTest(unittest.TestCase):
     def test_create_output_Should_valid(self):
         test_time = 100
         userParms = {'op': 'create'}
-        myHash = hashlib.sha256()
         for i in range(test_time):
+            myHash = hashlib.sha256()
             result = create._create(userParms)
             # score should be 0
             self.assertEqual(0, result['score'], 'score should be 0, current: '+str(result['score']))
