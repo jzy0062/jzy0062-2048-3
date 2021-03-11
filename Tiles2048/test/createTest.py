@@ -31,6 +31,7 @@ class CreateTest(unittest.TestCase):
                     two_count += 1
                 else:
                     self.assertEqual('0', ch, "invalid character in grid :" + ch)
+            self.assertEqual(2, two_count, "initial grid with wrong count of \'2\' :" + str(two_count))
 
 
 

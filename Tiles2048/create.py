@@ -20,4 +20,12 @@ def generate_init_grid():
     generate initial grid string with 2 initial '2'
     :return: string of grid containing two '2' in string
     """
-    return ""
+    loc1, loc2 = generate_init_loc()
+    grid = list('0' * 16)
+    grid[loc1] = '2'
+    grid[loc2] = '2'
+    grid2 = ""
+    for i in grid:
+        grid2 += i
+    grid = grid2
+    return grid
