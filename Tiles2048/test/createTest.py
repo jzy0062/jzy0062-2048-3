@@ -9,3 +9,13 @@ class CreateTest(unittest.TestCase):
         userParms = {'op': 'create', 'size': '4'}
         actualResult = create._create(userParms)
         self.assertIsNotNone(actualResult)
+
+    def test_init_loc_Should_different(self):
+        test_times = 1000
+        for i in range(test_times):
+            loc1, loc2 = create.generate_init_loc()
+            self.assertNotEqual(loc1, loc2, "initial location is same value: " + str(loc1))
+            self.assertTrue(loc1 >= 0, "initial location out of range")
+            self.assertTrue(loc2 >= 0, "initial location out of range")
+            self.assertTrue(loc1 <= 15, "initial location out of range")
+            self.assertTrue(loc2 <= 15, "initial location out of range")
