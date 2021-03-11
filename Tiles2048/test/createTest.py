@@ -47,5 +47,5 @@ class CreateTest(unittest.TestCase):
             self.assertEqual('ok', result['status'], 'status should be ok, current: '+str(result['status']))
             # integrity should be valid
             myHash.update(result['grid'].encode())
-            integrity = myHash.hexdigest()
+            integrity = myHash.hexdigest().upper()
             self.assertEqual(integrity, result['integrity'], 'integrity should be same')

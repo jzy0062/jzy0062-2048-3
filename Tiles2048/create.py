@@ -1,7 +1,14 @@
+import hashlib
 import random
 
+myHash = hashlib.sha256()
+
+
 def _create(userParms):
-    result = {'create': 'create stub'}
+    grid = generate_init_grid()
+    myHash.update(grid.encode())
+    integrity = myHash.hexdigest().upper()
+    result = {'grid': grid, 'score': 0, 'integrity': integrity, 'status': 'ok'}
     return result
 
 
