@@ -10,6 +10,6 @@ def generate_init_loc():
     generate 2 different place of initial two 2.
     :return: two integer belongs to [1, 15]
     """
-    loc1 = 0
-    loc2 = 0
+    loc1 = random.randint(0, 15)
+    loc2 = random.randint(0, loc1-1) if loc1 > 8 else random.randint(loc1 + 1, 15)
     return loc1, loc2
