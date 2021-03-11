@@ -1,4 +1,5 @@
 import unittest
+import hashlib
 import Tiles2048.create as create
 
 class CreateTest(unittest.TestCase):
@@ -34,4 +35,17 @@ class CreateTest(unittest.TestCase):
             self.assertEqual(2, two_count, "initial grid with wrong count of \'2\' :" + str(two_count))
 
 
-
+    def test_create_output_Should_valid(self):
+        test_time = 100
+        userParms = {'op': 'create'}
+        myHash = hashlib.sha256()
+        for i in range(test_time):
+            result = create._create(userParms)
+            # score should be 0
+            self.assertEqual(0, result['score'], 'score should be 0, current: '+str(result['score']))
+            # status should be ok
+            self.assertEqual('ok', result['status'], 'status should be ok, current: '+str(result['status']))
+            # integrity should be valid
+            myHash.update(result['grid'].encode())
+            integrity = myHash.hexdigest()
+            self.assertEqual(integrity, result['integrity'], 'integrity should be same')
